@@ -43,6 +43,7 @@ export const Canvas: Component<{
   fill?: Color
   transform?: Transforms
   alpha?: boolean
+  imageSmoothingEnabled?: boolean
   stats?: boolean
   draggable?: boolean
   debug?: boolean
@@ -101,7 +102,10 @@ export const Canvas: Component<{
   const ctx = canvas.getContext('2d', {
     alpha: props.alpha,
     willReadFrequently: true,
+    imageSmoothingEnabled: props.imageSmoothingEnabled ?? true, // Note: doesn't work
   })!
+  // @ts-ignore -- this does work
+  ctx.imageSmoothingEnabled = props.imageSmoothingEnabled ?? true;
 
   const frameQueue = new Set<(args: { clock: number }) => void>()
 
