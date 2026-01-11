@@ -1,15 +1,15 @@
 import { createToken } from '@solid-primitives/jsx-tokenizer'
 import { createEffect, createSignal } from 'solid-js'
 
-import { parser } from 'src/parser'
+import { parser } from '../../../parser'
 import {
   Dimensions,
   ExtendedColor,
   Object2DProps,
   Shape2DProps,
-} from 'src/types'
-import { createShape2D } from 'src/utils/createShape2D'
-import { resolveExtendedColor } from 'src/utils/resolveColor'
+} from '../../../types'
+import { createShape2D } from '../../../utils/createShape2D'
+import { resolveExtendedColor } from '../../../utils/resolveColor'
 
 type Rounded =
   | number

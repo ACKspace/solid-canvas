@@ -1,12 +1,12 @@
 import { TokenElement } from '@solid-primitives/jsx-tokenizer'
 import { Accessor, createEffect, splitProps } from 'solid-js'
-import { Rectangle } from 'src/components/Object2D/Shape2D/Path2D/Rectangle'
+import { Rectangle } from '../components/Object2D/Shape2D/Path2D/Rectangle'
 import {
   InternalContextType,
   InternalContext,
-} from 'src/context/InternalContext'
-import { Shape2DToken, Object2DToken } from 'src/parser'
-import { Shape2DProps, Dimensions, Object2DProps } from 'src/types'
+} from '../context/InternalContext'
+import { Shape2DToken, Object2DToken } from '../parser'
+import { Shape2DProps, Dimensions, Object2DProps } from '../types'
 import { createControlledProps } from './createControlledProps'
 import { createMatrix } from './createMatrix'
 import { createParenthood } from './createParenthood'

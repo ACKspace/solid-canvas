@@ -1,19 +1,19 @@
 import { createMemo, createSignal, createUniqueId, mergeProps } from 'solid-js'
-import { defaultShape2DProps } from 'src/defaultProps'
-import { Shape2DToken } from 'src/parser'
+import { defaultShape2DProps } from '../defaultProps'
+import { Shape2DToken } from '../parser'
 import {
   CanvasMouseEventListener,
   ResolvedShape2DProps,
   Shape2DProps,
   Vector,
-} from 'src/types'
-import { createControlledProps } from 'src/utils/createControlledProps'
-import { createParenthood } from 'src/utils/createParenthood'
-import renderPath from 'src/utils/renderPath'
+} from '../types'
+import { createControlledProps } from '../utils/createControlledProps'
+import { createParenthood } from '../utils/createParenthood'
+import renderPath from '../utils/renderPath'
 import { createUpdatedContext } from './createUpdatedContext'
 import { deepMergeGetters } from './mergeGetters'
 import { DeepRequired, RequireOptionals, SingleOrArray } from './typehelpers'
-import { Hover } from 'src/controllers/Hover'
+import { Hover } from '../controllers/Hover'
 import { isPointInShape2D } from './isPointInShape2D'
 
 const createPath2D = <T extends { [key: string]: any; style: any }>(arg: {

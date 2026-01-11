@@ -1,5 +1,5 @@
-import { InternalContextType } from 'src/context/InternalContext'
-import { ResolvedShape2DProps } from 'src/types'
+import { InternalContextType } from '../context/InternalContext'
+import { ResolvedShape2DProps } from '../types'
 import { resolveColor, resolveExtendedColor } from './resolveColor'
 
 export default (

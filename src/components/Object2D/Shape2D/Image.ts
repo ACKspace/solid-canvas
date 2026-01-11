@@ -1,19 +1,20 @@
 import { createToken } from '@solid-primitives/jsx-tokenizer'
 
 import { createSignal } from 'solid-js'
-import { InternalContextType } from 'src/context/InternalContext'
-import { parser } from 'src/parser'
+import { InternalContextType } from '../../../context/InternalContext'
+import { parser } from '../../../parser'
 import {
   Dimensions,
   ExtendedColor,
   ImageSource,
   Object2DProps,
   Shape2DProps,
-} from 'src/types'
-import { createMatrix } from 'src/utils/createMatrix'
-import { createShape2D } from 'src/utils/createShape2D'
-import { createUpdatedContext } from 'src/utils/createUpdatedContext'
-import resolveImageSource from 'src/utils/resolveImageSource'
+  Vector,
+} from '../../../types'
+import { createMatrix } from '../../../utils/createMatrix'
+import { createShape2D } from '../../../utils/createShape2D'
+import { createUpdatedContext } from '../../../utils/createUpdatedContext'
+import resolveImageSource from '../../../utils/resolveImageSource'
 
 /**
  * Paints an image to the canvas

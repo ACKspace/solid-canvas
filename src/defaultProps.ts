@@ -1,4 +1,4 @@
-import { ResolvedShape2DProps, Shape2DProps } from 'src/types'
+import { ResolvedShape2DProps, Shape2DProps } from './types'
 
 const defaultShape2DProps: ResolvedShape2DProps<unknown> = {
   style: {

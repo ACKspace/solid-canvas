@@ -7,9 +7,9 @@ import {
   onCleanup,
   untrack,
 } from 'solid-js'
-import { RGB, Shape2DStyle, Transforms } from 'src/types'
+import { RGB, Shape2DStyle, Transforms } from '../types'
 import { createController } from './createController'
-import { deepMergeGetters } from 'src/utils/mergeGetters'
+import { deepMergeGetters } from '../utils/mergeGetters'
 
 type HoverOptions = {
   active?: boolean

@@ -1,6 +1,6 @@
 import { Accessor } from 'solid-js'
-import { useInternalContext } from 'src/context/InternalContext'
-import { Shape2DProps, Transforms } from 'src/types'
+import { useInternalContext } from '../context/InternalContext'
+import { Shape2DProps, Transforms } from '../types'
 import { createMatrix } from './createMatrix'
 import { deepMergeGetters, mergeGetters } from './mergeGetters'
 

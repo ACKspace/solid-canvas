@@ -1,5 +1,5 @@
 import { Accessor, createResource } from 'solid-js'
-import { ImageSource } from 'src/types'
+import { ImageSource } from '../types'
 
 const loadImageSource = (media: ImageSource) =>
   new Promise<Exclude<ImageSource, string>>(resolve => {

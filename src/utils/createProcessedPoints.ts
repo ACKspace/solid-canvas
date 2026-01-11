@@ -1,6 +1,6 @@
 import { createLazyMemo } from '@solid-primitives/memo'
 import { mapArray, createSignal, Accessor } from 'solid-js'
-import { BezierPoint, CubicPoint, Vector } from 'src/types'
+import { BezierPoint, CubicPoint, Vector } from '../types'
 import addPositions from './addPositions'
 import invertPosition from './invertPosition'
 

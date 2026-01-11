@@ -1,4 +1,4 @@
-import { CanvasMouseEvent, CanvasMouseEventTypes } from 'src/types'
+import { CanvasMouseEvent, CanvasMouseEventTypes } from '../types'
 
 export { Drag } from './Drag'
 export { CubicHandle, QuadraticHandle } from './Handle'

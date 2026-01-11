@@ -3,7 +3,7 @@ import {
   ExtendedColor,
   Object2DProps,
   ResolvedShape2DProps,
-} from 'src/types'
+} from '../types'
 
 const isPointInPath = (
   event: CanvasMouseEvent,

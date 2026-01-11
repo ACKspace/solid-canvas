@@ -1,4 +1,4 @@
-import { Vector } from 'src/types'
+import { Vector } from '../types'
 
 const renderPoint = (ctx: CanvasRenderingContext2D, position: Vector) => {
   ctx.save()

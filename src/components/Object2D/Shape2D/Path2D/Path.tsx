@@ -1,8 +1,8 @@
 import { createToken } from '@solid-primitives/jsx-tokenizer'
 
-import { PathResult } from 'src/d/d'
-import { parser } from 'src/parser'
-import { Shape2DProps } from 'src/types'
+import { PathResult } from '../../../../d/d'
+import { parser } from '../../../../parser'
+import { Shape2DProps } from '../../../../types'
 import { createPath2D } from '../../../../utils/createPath2D'
 
 /**

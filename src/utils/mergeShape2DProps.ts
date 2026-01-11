@@ -1,6 +1,6 @@
 import { splitProps } from 'solid-js'
-import { defaultShape2DProps } from 'src/defaultProps'
-import { Shape2DProps } from 'src/types'
+import { defaultShape2DProps } from '../defaultProps'
+import { Shape2DProps } from '../types'
 import { mergeGetters } from './mergeGetters'
 import { RequireOptionals } from './typehelpers'
 

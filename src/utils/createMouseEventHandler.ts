@@ -1,13 +1,13 @@
 import { TokenElement } from '@solid-primitives/jsx-tokenizer'
 import { Accessor } from 'solid-js'
-import { InternalContextType } from 'src/context/InternalContext'
-import { CanvasToken } from 'src/parser'
+import { InternalContextType } from '../context/InternalContext'
+import { CanvasToken } from '../parser'
 import {
   Vector,
   CanvasMouseEvent,
   CanvasMouseEventListener,
   CanvasMouseEventTypes,
-} from 'src/types'
+} from '../types'
 import forEachReversed from './forEachReversed'
 
 const createMouseEventHandler = (

@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'solid-js'
-import { CanvasToken } from 'src/parser'
+import { CanvasToken } from '../parser'
 import { CanvasMouseEvent } from '../types'
 
 export type InternalContextType = {

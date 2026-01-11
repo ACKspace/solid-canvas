@@ -1,4 +1,4 @@
-import { BezierPoint, CubicPoint, Vector, QuadraticPoint } from 'src/types'
+import { BezierPoint, CubicPoint, Vector, QuadraticPoint } from '../types'
 import { ArcParams } from './createArc'
 import { linkTo } from './linkTo'
 

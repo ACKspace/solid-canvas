@@ -1,6 +1,6 @@
 import { Accessor, createEffect, createMemo } from 'solid-js'
-import { InternalContextType } from 'src/context/InternalContext'
-import { Shape2DProps, Transforms } from 'src/types'
+import { InternalContextType } from '../context/InternalContext'
+import { Shape2DProps, Transforms } from '../types'
 
 const createMatrix = (
   props: Accessor<{ transform?: Partial<Transforms> }>,

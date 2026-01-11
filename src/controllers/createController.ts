@@ -1,6 +1,6 @@
 import { Accessor, createMemo } from 'solid-js'
-import { ResolvedShape2DProps, Shape2DProps } from 'src/types'
-import { deepMergeGetters } from 'src/utils/mergeGetters'
+import { ResolvedShape2DProps, Shape2DProps } from '../types'
+import { deepMergeGetters } from '../utils/mergeGetters'
 import { RegisterControllerEvents } from './controllers'
 
 const createController = <

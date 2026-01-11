@@ -14,10 +14,10 @@ import {
   untrack,
 } from 'solid-js'
 import { createStore } from 'solid-js/store'
-import { InternalContext } from 'src/context/InternalContext'
-import { UserContext } from 'src/context/UserContext'
+import { InternalContext } from '../context/InternalContext'
+import { UserContext } from '../context/UserContext'
 
-import { CanvasToken, parser } from 'src/parser'
+import { CanvasToken, parser } from '../parser'
 import {
   CanvasMouseEvent,
   CanvasMouseEventTypes,
@@ -26,12 +26,12 @@ import {
   CursorStyle,
   Transforms,
   Vector,
-} from 'src/types'
-import { createMatrix } from 'src/utils/createMatrix'
-import { createMouseEventHandler } from 'src/utils/createMouseEventHandler'
-import forEachReversed from 'src/utils/forEachReversed'
-import { resolveColor } from 'src/utils/resolveColor'
-import withContext from 'src/utils/withContext'
+} from '../types'
+import { createMatrix } from '../utils/createMatrix'
+import { createMouseEventHandler } from '../utils/createMouseEventHandler'
+import forEachReversed from '../utils/forEachReversed'
+import { resolveColor } from '../utils/resolveColor'
+import withContext from '../utils/withContext'
 
 /**
  * All `solid-canvas`-components have to be inside a `Canvas`

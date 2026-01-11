@@ -1,9 +1,9 @@
 import { createToken } from '@solid-primitives/jsx-tokenizer'
 
-import { createCubic } from 'src/d/d'
-import { parser } from 'src/parser'
-import { Vector, Shape2DProps } from 'src/types'
-import { createPath2D } from 'src/utils/createPath2D'
+import { createCubic } from '../../../../d/d'
+import { parser } from '../../../../parser'
+import { Vector, Shape2DProps } from '../../../../types'
+import { createPath2D } from '../../../../utils/createPath2D'
 
 export type BezierProps = {
   points: {

@@ -1,5 +1,5 @@
 import { Accessor, createMemo } from 'solid-js'
-import { InternalContextType } from 'src/context/InternalContext'
+import { InternalContextType } from '../context/InternalContext'
 
 const createBounds = (
   points: Accessor<{ x: number; y: number }[]>,

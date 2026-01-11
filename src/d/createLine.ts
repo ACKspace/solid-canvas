@@ -1,4 +1,4 @@
-import { Vector } from 'src/types'
+import { Vector } from '../types'
 import { CreatePathParams, PathResult } from './d'
 import { linkTo } from './linkTo'
 function createLine(points: Vector[]): PathResult

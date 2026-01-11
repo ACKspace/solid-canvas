@@ -1,10 +1,10 @@
 import { createToken } from '@solid-primitives/jsx-tokenizer'
 import { mergeProps } from 'solid-js'
 
-import { useInternalContext } from 'src/context/InternalContext'
-import { parser } from 'src/parser'
-import { ImageSource } from 'src/types'
-import resolveImage from 'src/utils/resolveImageSource'
+import { useInternalContext } from '../../context/InternalContext'
+import { parser } from '../../parser'
+import { ImageSource } from '../../types'
+import resolveImage from '../../utils/resolveImageSource'
 
 type PatternProps = {
   image: ImageSource

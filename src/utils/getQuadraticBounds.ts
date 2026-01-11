@@ -1,4 +1,4 @@
-import { Vector } from 'src/types'
+import { Vector } from '../types'
 
 function solveB2(a: number, b: number, c: number) {
   var ba = b - a

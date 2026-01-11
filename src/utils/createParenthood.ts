@@ -3,20 +3,20 @@ import { Accessor, createEffect, JSX, splitProps } from 'solid-js'
 import {
   InternalContext,
   InternalContextType,
-} from 'src/context/InternalContext'
-import { ControllerEvents } from 'src/controllers/controllers'
+} from '../context/InternalContext'
+import { ControllerEvents } from '../controllers/controllers'
 
-import { CanvasToken, parser } from 'src/parser'
+import { CanvasToken, parser } from '../parser'
 import {
   CanvasMouseEvent,
   Composite,
   ExtendedColor,
   Vector,
   Shape2DProps,
-} from 'src/types'
-import forEachReversed from 'src/utils/forEachReversed'
-import { resolveExtendedColor } from 'src/utils/resolveColor'
-import withContext from 'src/utils/withContext'
+} from '../types'
+import forEachReversed from '../utils/forEachReversed'
+import { resolveExtendedColor } from '../utils/resolveColor'
+import withContext from '../utils/withContext'
 import { SingleOrArray } from './typehelpers'
 
 /**

@@ -1,5 +1,5 @@
-import { CubicPoint, Vector } from 'src/types'
-import addPositions from 'src/utils/addPositions'
+import { CubicPoint, Vector } from '../types'
+import addPositions from '../utils/addPositions'
 import { CreatePathParams, PathResult } from './d'
 import { linkTo } from './linkTo'
 

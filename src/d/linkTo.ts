@@ -1,4 +1,4 @@
-import { CubicPoint, Vector, QuadraticPoint } from 'src/types'
+import { CubicPoint, Vector, QuadraticPoint } from '../types'
 import { createCubic, CreatePathParams } from './d'
 import { ArcParams, createArc } from './createArc'
 import { createLine } from './createLine'

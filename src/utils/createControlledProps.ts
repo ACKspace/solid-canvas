@@ -1,13 +1,13 @@
 import { createLazyMemo } from '@solid-primitives/memo'
 import { Accessor, mapArray } from 'solid-js'
-import { ControllerEvents } from 'src/controllers/controllers'
-import { ResolvedShape2DProps, Shape2DProps } from 'src/types'
+import { ControllerEvents } from '../controllers/controllers'
+import { ResolvedShape2DProps, Shape2DProps } from '../types'
 import { DeepRequired } from './typehelpers'
 import withContext from './withContext'
 import {
   InternalContext,
   InternalContextType,
-} from 'src/context/InternalContext'
+} from '../context/InternalContext'
 
 const createControlledProps = <
   T extends Record<string, any>,

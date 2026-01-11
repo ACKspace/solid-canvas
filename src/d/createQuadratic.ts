@@ -1,5 +1,5 @@
-import { Vector, QuadraticPoint } from 'src/types'
-import addPositions from 'src/utils/addPositions'
+import { Vector, QuadraticPoint } from '../types'
+import addPositions from '../utils/addPositions'
 import { CreatePathParams, PathResult } from './d'
 import { linkTo } from './linkTo'
 

@@ -9,9 +9,9 @@ import {
   untrack,
 } from 'solid-js'
 import { Arc, Group, Line } from 'src'
-import { Drag } from 'src/controllers/Drag'
-import { Object2DToken } from 'src/parser'
-import { CanvasMouseEvent, Vector } from 'src/types'
+import { Drag } from '../controllers/Drag'
+import { Object2DToken } from '../parser'
+import { CanvasMouseEvent, Vector } from '../types'
 
 type BezierPoint = {
   point: Vector

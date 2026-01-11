@@ -1,10 +1,10 @@
 import { createToken } from '@solid-primitives/jsx-tokenizer'
 import { mergeProps } from 'solid-js'
-import { resolveColor } from 'src/utils/resolveColor'
+import { resolveColor } from '../../utils/resolveColor'
 
-import { useInternalContext } from 'src/context/InternalContext'
-import { parser } from 'src/parser'
-import { Color, Vector } from 'src/types'
+import { useInternalContext } from '../../context/InternalContext'
+import { parser } from '../../parser'
+import { Color, Vector } from '../../types'
 
 type GradientProps = { stops: { offset: number; color: Color }[] } & (
   | {

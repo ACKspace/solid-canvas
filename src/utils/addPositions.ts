@@ -1,4 +1,4 @@
-import { Vector } from 'src/types'
+import { Vector } from '../types'
 
 const addPositions = <T extends Vector | undefined>(...args: T[]): T => {
   let result!: undefined | Vector

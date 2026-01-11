@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js'
-import { CanvasMouseEvent, Vector, Shape2DProps } from 'src/types'
+import { CanvasMouseEvent, Vector, Shape2DProps } from '../../types'
 
 import { TokenElement } from '@solid-primitives/jsx-tokenizer'
 import { Accessor, For, Index, JSX, Show, untrack } from 'solid-js'
@@ -8,16 +8,16 @@ import {
   InternalContext,
   InternalContextType,
   useInternalContext,
-} from 'src/context/InternalContext'
-import { Drag } from 'src/controllers/Drag'
-import { Object2DToken } from 'src/parser'
-import { createProcessedPoints } from 'src/utils/createProcessedPoints'
-import { deepMergeGetters, mergeGetters } from 'src/utils/mergeGetters'
-import withContext from 'src/utils/withContext'
+} from '../../context/InternalContext'
+import { Drag } from '../../controllers/Drag'
+import { Object2DToken } from '../../parser'
+import { createProcessedPoints } from '../../utils/createProcessedPoints'
+import { deepMergeGetters, mergeGetters } from '../../utils/mergeGetters'
+import withContext from '../../utils/withContext'
 import { createController } from '../createController'
-import { QuadraticProps } from 'src/components/Object2D/Shape2D/Path2D/Quadratic'
-import { BezierProps } from 'src/components/Object2D/Shape2D/Path2D/Bezier'
-import { createUpdatedContext } from 'src/utils/createUpdatedContext'
+import { QuadraticProps } from '../../components/Object2D/Shape2D/Path2D/Quadratic'
+import { BezierProps } from '../../components/Object2D/Shape2D/Path2D/Bezier'
+import { createUpdatedContext } from '../../utils/createUpdatedContext'
 
 type CubicPoint = {
   point: Vector

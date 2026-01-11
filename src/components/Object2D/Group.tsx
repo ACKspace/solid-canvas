@@ -1,12 +1,12 @@
 import { createToken } from '@solid-primitives/jsx-tokenizer'
 import { Accessor, mergeProps, splitProps } from 'solid-js'
 import { JSX } from 'solid-js/jsx-runtime'
-import { RegisterControllerEvents } from 'src/controllers/controllers'
-import { CanvasToken, parser } from 'src/parser'
-import { Color, Object2DProps, ResolvedShape2DProps, Vector } from 'src/types'
-import { createParenthood } from 'src/utils/createParenthood'
-import { createUpdatedContext } from 'src/utils/createUpdatedContext'
-import { SingleOrArray } from 'src/utils/typehelpers'
+import { RegisterControllerEvents } from '../../controllers/controllers'
+import { CanvasToken, parser } from '../../parser'
+import { Color, Object2DProps, ResolvedShape2DProps, Vector } from '../../types'
+import { createParenthood } from '../../utils/createParenthood'
+import { createUpdatedContext } from '../../utils/createUpdatedContext'
+import { SingleOrArray } from '../../utils/typehelpers'
 import { T } from 'vitest/dist/types-c800444e'
 
 export type GroupProps = {

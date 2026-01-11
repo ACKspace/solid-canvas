@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js'
-import { ExtendedColor } from 'src/types'
-import { mergeGetters } from 'src/utils/mergeGetters'
+import { ExtendedColor } from '../types'
+import { mergeGetters } from '../utils/mergeGetters'
 import { createController } from './createController'
 
 type HoverOptions = {

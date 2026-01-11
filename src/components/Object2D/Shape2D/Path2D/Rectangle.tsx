@@ -1,7 +1,7 @@
 import { createToken } from '@solid-primitives/jsx-tokenizer'
 
-import { parser } from 'src/parser'
-import { Dimensions, Shape2DProps } from 'src/types'
+import { parser } from '../../../../parser'
+import { Dimensions, Shape2DProps } from '../../../../types'
 import { createPath2D } from '../../../../utils/createPath2D'
 
 export type RectangleProps = {
