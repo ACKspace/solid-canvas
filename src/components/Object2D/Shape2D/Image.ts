@@ -24,6 +24,8 @@ import resolveImageSource from '../../../utils/resolveImageSource'
 type ImageProps = {
   image: ImageSource
   style: {
+    sourceOffset?: Vector
+    sourceDimensions?: Dimensions
     dimensions?: Dimensions
     background?: ExtendedColor
   }
@@ -43,29 +45,45 @@ const Image = createToken(
         if (!image()) return
         if (props.opacity) context.ctx.globalAlpha = props.opacity
         context.ctx.setTransform(context.matrix)
-        context.ctx.drawImage(
-          image()!,
-          0,
-          0,
-          props.style.dimensions?.width ?? 0,
-          props.style.dimensions?.height ?? 0,
-        )
+        //@ts-ignore - parseInt just works with int.
+        const width = parseInt(image()!.width);
+        //@ts-ignore - parseInt just works with int.
+        const height = parseInt(image()!.height);
+        if (props.style.sourceOffset || props.style.sourceDimensions) {
+          const sx = props.style.sourceOffset?.x ?? 0;
+          const sy = props.style.sourceOffset?.y ?? 0;
+          context.ctx.drawImage(
+            image()!,
+            sx, // sx
+            sy, // sy
+            props.style.sourceDimensions?.width ?? (width - sx), // sw
+            props.style.sourceDimensions?.height ?? (height - sy), // sh
+            0, // dx
+            0, // dy
+            props.style.dimensions?.width ?? width, // dw
+            props.style.dimensions?.height ?? height, // dh
+          )
+        } else {
+          context.ctx.drawImage(
+            image()!,
+            0, // dx
+            0, // dy
+            props.style.dimensions?.width ?? width, // dw
+            props.style.dimensions?.height ?? height, // dh
+          )
+        }
         context.ctx.resetTransform()
       },
       get dimensions() {
         return (
-          props.style?.dimensions ?? {
-            width: 100,
-            height: 100,
+          {
+            width: props.style.dimensions?.width ?? (image() ? parseInt(image().width) : 100),
+            height: props.style.dimensions?.height ?? (image() ? parseInt(image().height) : 100),
           }
         )
       },
       defaultValues: {
         style: {
-          dimensions: {
-            width: 100,
-            height: 100,
-          },
         },
       },
     })
