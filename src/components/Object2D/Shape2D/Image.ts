@@ -1,6 +1,6 @@
 import { createToken } from '@solid-primitives/jsx-tokenizer'
 
-import { createSignal } from 'solid-js'
+import { createEffect, createSignal } from 'solid-js'
 import { InternalContextType } from '../../../context/InternalContext'
 import { parser } from '../../../parser'
 import {
@@ -29,12 +29,17 @@ type ImageProps = {
     dimensions?: Dimensions
     background?: ExtendedColor
   }
+  onLoad?: (image: Exclude<ImageSource, string>) => void
 }
 
 const Image = createToken(
   parser,
   (props: Shape2DProps & Object2DProps & ImageProps) => {
     const image = resolveImageSource(() => props.image)
+    createEffect(() => {
+      if (!image()) return;
+      props.onLoad?.(image()!);
+    })
     return createShape2D({
       props,
       id: 'Image',
