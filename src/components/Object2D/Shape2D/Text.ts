@@ -62,7 +62,26 @@ const Text = createToken(
             props.style?.fontFamily,
           )
 
-          if (props.opacity) context.ctx.globalAlpha = props.opacity
+          if (props.opacity) context.ctx.globalAlpha = props.opacity;
+
+          // Dirty hack: allow line width and outline (differnt from stroke)
+          if (props.style?.lineWidth) context.ctx.lineWidth = props.style.lineWidth;
+          if (
+            props.outlineStyle &&
+            props.outlineStyle !== 'transparent'
+          ) {
+            context.ctx.save();
+            context.ctx.strokeStyle =
+              resolveExtendedColor(props.outlineStyle) ?? 'transparent'
+
+              context.ctx.strokeText(
+                props.text,
+                context.matrix.e,
+                context.matrix.f + dimensions()!.height,
+              )
+            context.ctx.restore();
+          }
+          // End of dirty hack
 
           context.ctx.fillStyle =
             resolveExtendedColor(props.style?.fill) ?? 'black'
