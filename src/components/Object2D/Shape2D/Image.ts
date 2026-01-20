@@ -28,6 +28,7 @@ type ImageProps = {
     sourceDimensions?: Dimensions
     dimensions?: Dimensions
     background?: ExtendedColor
+    smoothingQuality?: "none" | "low" | "medium" | "high"
   }
   onLoad?: (image: Exclude<ImageSource, string>) => void
 }
@@ -49,6 +50,12 @@ const Image = createToken(
       render: (props, context) => {
         if (!image()) return
         if (props.opacity) context.ctx.globalAlpha = props.opacity
+        context.ctx.imageSmoothingEnabled = props.style.smoothingQuality !== "none";
+        // Note: no support for FireFox
+        if ("imageSmoothingQuality" in context.ctx && props.style.smoothingQuality && props.style.smoothingQuality !== "none") {
+          context.ctx.imageSmoothingQuality = props.style.smoothingQuality as Exclude<typeof props.style.smoothingQuality, "none">;
+        }
+
         context.ctx.setTransform(context.matrix)
         //@ts-ignore - parseInt just works with int.
         const width = parseInt(image()!.width);
