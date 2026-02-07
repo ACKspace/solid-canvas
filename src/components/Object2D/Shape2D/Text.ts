@@ -55,12 +55,20 @@ const Text = createToken(
 
     return createShape2D({
       id: 'Text',
-      render: (props, context) => {
+      render: async (props, context) => {
+
         if (props.text !== '') {
           context.ctx.font = getFontString(
             props.style?.fontSize,
             props.style?.fontFamily,
           )
+
+          // Wait for the font to load
+          for await (const font of document.fonts) {
+            // console.log(font.family, await font.loaded)
+            if (font.family === props.style?.fontFamily)
+              await font.loaded;
+          }
 
           if (props.opacity) context.ctx.globalAlpha = props.opacity;
 
