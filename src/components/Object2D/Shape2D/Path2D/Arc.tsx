@@ -8,6 +8,7 @@ type ArcProps = {
   style: {
     close?: boolean
     radius?: number
+    radius2?: number
     angle?: {
       start: number
       end: number
@@ -28,16 +29,29 @@ const Arc = createToken(parser, (props: Shape2DProps<ArcProps> & ArcProps) => {
       angle: { start: 0, end: 2 * Math.PI },
       close: false,
       radius: 10,
+      radius2: 0,
     },
     path: props => {
       path = new Path2D()
-      path.arc(
-        props.style.radius ?? 30,
-        props.style.radius ?? 30,
-        props.style.radius ?? 30,
-        props.style.angle.start,
-        props.style.angle.end ?? 2 * Math.PI,
-      )
+      if (props.style.radius2) {
+        path.ellipse(
+          props.style.radius ?? 30,
+          props.style.radius2 ?? 30,
+          props.style.radius ?? 30,
+          props.style.radius2 ?? 30,
+          0,
+          props.style.angle.start,
+          props.style.angle.end ?? 2 * Math.PI,
+        )
+      } else {
+        path.arc(
+          props.style.radius ?? 30,
+          props.style.radius ?? 30,
+          props.style.radius ?? 30,
+          props.style.angle.start,
+          props.style.angle.end ?? 2 * Math.PI,
+        )
+      }
       return path
     },
     bounds: props => [
