@@ -48,6 +48,8 @@ export const Canvas: Component<{
   debug?: boolean
   clock?: number
   cursor?: CursorStyle
+  width?: number
+  height?: number  
   feedback?:
     | ((ctx: CanvasRenderingContext2D) => void)
     | true
@@ -63,8 +65,8 @@ export const Canvas: Component<{
   onFrame?: (args: { clock: number }) => void
 }> = props => {
   const [canvasDimensions, setCanvasDimensions] = createSignal({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: props.width ?? window.innerWidth,
+    height: props.height ?? window.innerHeight,
   })
 
   const [originPosition, setOriginPosition] = createSignal({ x: 0, y: 0 })
@@ -303,8 +305,8 @@ export const Canvas: Component<{
   onMount(() => {
     const updateDimensions = () => {
       setCanvasDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: props.width ?? window.innerWidth,
+        height: props.height ?? window.innerHeight,
       })
     }
 
