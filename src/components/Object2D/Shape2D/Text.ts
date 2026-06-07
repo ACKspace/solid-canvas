@@ -1,5 +1,4 @@
 import { createToken } from '@solid-primitives/jsx-tokenizer'
-import { createEffect, createSignal } from 'solid-js'
 
 import { parser } from '../../../parser'
 import {
@@ -19,6 +18,7 @@ type Rounded =
 
 type TextProps = Shape2DProps & {
   style?: {
+    align?: "left" | "center" | "right"
     background?: ExtendedColor
     rounded?: Rounded
     padding?: number
@@ -51,81 +51,94 @@ const getFontString = (size?: number, fontFamily?: string) =>
 const Text = createToken(
   parser,
   (props: Shape2DProps & Object2DProps & TextProps) => {
-    const [dimensions, setDimensions] = createSignal<Dimensions | undefined>()
+    const alignOffset = (dimensions: Dimensions, align?: string) => {
+      switch (align) {
+        case "center": return dimensions.width / 2;
+        case "right": return dimensions.width / 2;
+        default: return 0;
+      }
+    };
 
     return createShape2D({
       id: 'Text',
       render: async (props, context) => {
 
-        if (props.text !== '') {
-          context.ctx.font = getFontString(
-            props.style?.fontSize,
-            props.style?.fontFamily,
-          )
+        if (!props.text) return;
 
-          // Wait for the font to load
-          for await (const font of document.fonts) {
-            // console.log(font.family, await font.loaded)
-            if (font.family === props.style?.fontFamily)
-              await font.loaded;
-          }
+        context.ctx.font = getFontString(
+          props.style?.fontSize,
+          props.style?.fontFamily,
+        )
 
-          if (props.opacity) context.ctx.globalAlpha = props.opacity;
+        // Wait for the font to load
+        for await (const font of document.fonts) {
+          // console.log("font", font.family, await font.loaded)
+          if (font.family === props.style?.fontFamily)
+            await font.loaded;
+        }
 
-          // Dirty hack: allow line width and outline (differnt from stroke)
-          if (props.style?.lineWidth) context.ctx.lineWidth = props.style.lineWidth;
-          if (
-            props.outlineStyle &&
-            props.outlineStyle !== 'transparent'
-          ) {
-            context.ctx.save();
-            context.ctx.strokeStyle =
-              resolveExtendedColor(props.outlineStyle) ?? 'transparent'
+        const metrics = context.ctx.measureText(props.text)
+        const dimensions = {
+          width: metrics.width,
+          height: metrics.actualBoundingBoxAscent,
+        };
+        const offset = alignOffset(dimensions, props.style?.align);
 
-              context.ctx.strokeText(
-                props.text,
-                context.matrix.e,
-                context.matrix.f + dimensions()!.height,
-              )
-            context.ctx.restore();
-          }
-          // End of dirty hack
+        if (props.opacity) context.ctx.globalAlpha = props.opacity;
 
-          context.ctx.fillStyle =
-            resolveExtendedColor(props.style?.fill) ?? 'black'
+        // Dirty hack: allow line width and outline (different from stroke)
+        if (props.style?.lineWidth) context.ctx.lineWidth = props.style.lineWidth;
+        if (
+          props.outlineStyle &&
+          props.outlineStyle !== 'transparent'
+        ) {
+          context.ctx.save();
           context.ctx.strokeStyle =
-            resolveExtendedColor(props.stroke) ?? 'transparent'
+            resolveExtendedColor(props.outlineStyle) ?? 'transparent'
 
-          if ((props.isHovered || props.isSelected) && props.hoverStyle) {
-            context.ctx.fillStyle =
-              resolveExtendedColor(props.hoverStyle.fill) ??
-              context.ctx.fillStyle
-            context.ctx.strokeStyle =
-              resolveExtendedColor(props.hoverStyle.stroke) ??
-              context.ctx.strokeStyle
-          }
-
-          // TODO:  optimization: render text to OffscreenCanvas instead of re-rendering each frame          context.ctx.resetTransform()
-          if (
-            context.ctx.fillStyle &&
-            context.ctx.fillStyle !== 'transparent'
-          ) {
-            context.ctx.fillText(
-              props.text,
-              context.matrix.e,
-              context.matrix.f + dimensions()!.height,
-            )
-          }
-          if (
-            context.ctx.strokeStyle &&
-            context.ctx.strokeStyle !== 'transparent'
-          )
             context.ctx.strokeText(
               props.text,
-              context.matrix.e,
-              context.matrix.f + dimensions()!.height,
+              context.matrix.e - offset,
+              context.matrix.f + dimensions.height,
             )
+          context.ctx.restore();
         }
+        // End of dirty hack
+
+        context.ctx.fillStyle =
+          resolveExtendedColor(props.style?.fill) ?? 'black'
+        context.ctx.strokeStyle =
+          resolveExtendedColor(props.stroke) ?? 'transparent'
+
+        if ((props.isHovered || props.isSelected) && props.hoverStyle) {
+          context.ctx.fillStyle =
+            resolveExtendedColor(props.hoverStyle.fill) ??
+            context.ctx.fillStyle
+          context.ctx.strokeStyle =
+            resolveExtendedColor(props.hoverStyle.stroke) ??
+            context.ctx.strokeStyle
+        }
+
+        // TODO:  optimization: render text to OffscreenCanvas instead of re-rendering each frame          context.ctx.resetTransform()
+        if (
+          context.ctx.fillStyle &&
+          context.ctx.fillStyle !== 'transparent'
+        ) {
+          context.ctx.fillText(
+            props.text,
+            context.matrix.e - offset,
+            context.matrix.f + dimensions.height,
+          )
+        }
+        if (
+          context.ctx.strokeStyle &&
+          context.ctx.strokeStyle !== 'transparent'
+        )
+          context.ctx.strokeText(
+            props.text,
+            context.matrix.e - offset,
+            context.matrix.f + dimensions.height,
+          )
       },
       props,
       defaultValues: {
@@ -135,20 +148,15 @@ const Text = createToken(
         background: undefined,
       },
       setup: (props, context) => {
-        setTimeout(() => {
-          context.ctx.font = getFontString(
-            props.style?.fontSize,
-            props.style?.fontFamily,
-          )
-          const metrics = context.ctx.measureText(props.text)
-          setDimensions({
-            width: metrics.width,
-            height: metrics.actualBoundingBoxAscent,
-          })
-        }, 0)
+        context.ctx.font = getFontString(
+          props.style?.fontSize,
+          props.style?.fontFamily,
+        )
+        // Trigger font load
+        context.ctx.measureText(props.text)
       },
       get dimensions() {
-        return dimensions()
+        return { width: 0, height: 0 }
       },
     })
   },
